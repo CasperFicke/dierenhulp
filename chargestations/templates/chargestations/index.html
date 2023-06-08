@@ -1,0 +1,25 @@
+<!-- chargestations/templates/chargestations/index -->
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_files %}
+{% endblock css_files %}
+
+{% block script_files_head %}
+{% endblock script_files_head %}
+
+{% block title %}chargestations{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <div id="map" style="height: 600px; with:600px;"></div>
+    {{stations|json_script:"stations_json"}}
+  </div>
+{% endblock content %}
+
+{% block script_files_bottom %}
+  <script src="{% static 'chargestations/scripts/index.js' %}" defer></script>
+{% endblock script_files_bottom %}
+  
