@@ -12,12 +12,15 @@ from .models import EVChargingLocation, UserLocation
 
 # index view
 def index(request):
-    stations = list(EVChargingLocation.objects.values('latitude', 'longitude')[:100])
-    #print(stations[:2])
-    context = {
-        'stations': stations
-        }
-    return render(request, 'chargestations/index.html', context)
+  title = 'Chargestations'
+  # create a list of dictionaries(use .values) from lattitude and longgitude of the database objects
+  stations = list(EVChargingLocation.objects.values('latitude', 'longitude')[:100])
+  #print(stations[:2])
+  context = {
+    'title'   : title,
+    'stations': stations
+  }
+  return render(request, 'chargestations/index.html', context)
 
 # Return nearest station
 def nearest_station(request):

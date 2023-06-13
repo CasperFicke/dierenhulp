@@ -11,15 +11,19 @@
 {% block script_files_head %}
 {% endblock script_files_head %}
 
-{% block title %}Nestkasten{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
 {% block content %}
   <div class="container">
-    <div id="map" style="height: 600px; with:600px;"></div>
+    <h1>{{ title }}</h1>
+    <h3>Leaflet.js</h3>
+    <!-- map -->
+    <div id="map"></div>
   </div>
 {% endblock content %}
 
 {% block script_files_bottom %}
+<!-- local JS -->
   <script src="{% static 'nestkasten/scripts/map.js' %}" defer></script>
 {% endblock script_files_bottom %}
   

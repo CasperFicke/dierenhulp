@@ -1,25 +1,26 @@
 /* chargestations/static/scripts/index.js */
 
 // Initialize the map
-var map = L.map('map').setView([41.5055, -72.7], 8);
+var map = L.map('map').setView([41.51, -72.7], 8);
 
 // add openstreetmap layer
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  maxZoom: 19,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// access data in javascript
+// convert json text object to JSON dataobject to use data in javascript
 let stations = JSON.parse(document.getElementById('stations_json').textContent)
 
 // add marker for each station
 stations.forEach(station => {
   L.marker([station.latitude, station.longitude])
   .addTo(map)
+  .bindPopup('I am a<br> Chargestation.')
 })
 
-// click op the map
-map.on('click', (event) =>{
+// double click op the map
+map.on('dblclick', (event) =>{
   //console.log(event.latlng)
   let lat = event.latlng.lat
   let lng = event.latlng.lng

@@ -1,6 +1,5 @@
 # Dierenhulp
 
-django applicaite tbv beheer van dierenhulpmiddelen
+django applicatie tbv beheer van dierenhulpmiddelen
 
 nestkasten
-
