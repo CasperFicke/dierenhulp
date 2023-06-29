@@ -16,7 +16,7 @@ let stations = JSON.parse(document.getElementById('stations_json').textContent)
 stations.forEach(station => {
   L.marker([station.latitude, station.longitude])
   .addTo(map)
-  .bindPopup('I am a<br> Chargestation.')
+  .bindPopup('Station<br>' + station.station_name)
 })
 
 // double click op the map

@@ -31,8 +31,11 @@ INSTALLED_APPS = [
   'users.apps.UsersConfig',
   'nestkasten.apps.NestkastenConfig',
   'chargestations.apps.ChargestationsConfig',
+  'mushrooms.apps.MushroomsConfig',
   # support packages
-  'django_extensions',
+  'django_extensions', # django-extentions
+  'leaflet', # django-leaflet
+  'djgeojson', # django-geojson
 ]
 
 MIDDLEWARE = [
@@ -106,17 +109,30 @@ USE_TZ        = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, 'static'),
-  os.path.join(BASE_DIR, 'media')
-]
+  BASE_DIR / 'static',
+  BASE_DIR / 'media',
+]    # Django zoekt altijd in de static-folder van de app, maar daarnaast ook op deze lokatie(s)
 
-STATIC_URL  = "static/"
+STATIC_URL  = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL  = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
+MEDIA_URL   = '/media/'                # URL via welke mediafiles toegankelijk zijn van buiten de app
+MEDIA_ROOT  = BASE_DIR / 'mediafiles'  # absoluut pad waar project mediafiles worden opgeslagen
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django-leaflet configuratie
+LEAFLET_CONFIG = {
+  'DEFAULT_CENTER'     : (52.5, 4.95),
+  'DEFAULT_ZOOM'       : 12,
+  'MIN_ZOOM'           : 3,
+  'MAX_ZOOM'           : 18,
+  'DEFAULT_PRECISION'  : 6,
+  'ATTRIBUTION_PREFIX' : 'Powered by datalab',
+  'SCALE'              : 'metric',
+  'RESET_VIEW'         : False,
+  #'MINIMAP'            : True,
+}

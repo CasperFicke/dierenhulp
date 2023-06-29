@@ -1,6 +1,5 @@
 # nestkasten/urls.py
 
-"""Markers urls."""
 # django
 from django.urls import path
 

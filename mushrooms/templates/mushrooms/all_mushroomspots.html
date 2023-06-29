@@ -1,0 +1,41 @@
+
+<!-- mushrooms/all_mushrooms.html -->
+
+{% extends "base.html" %}
+{% load leaflet_tags %}
+{% load geojson_tags %}
+
+{% load static %}
+
+{% block title %}{{ title|title }}{% endblock title %}
+
+{% block css_files %}
+  {% leaflet_css %}
+{% endblock css_files %}
+
+{% block script_files_head %}
+  {% leaflet_js %}
+{% endblock script_files_head %}
+
+{% block content %}
+  <h1>Mushroomspots</h1>
+  <h3>django-leaflet & django-geojson</h3>
+  <script type="text/javascript">
+    var collection = {{ qs_results|geojsonfeature:"popupContent"|safe }};
+  
+    function onEachFeature(feature, layer) {
+      if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+      }
+    }
+  
+    function map_init(map, options) {
+      L.geoJson(collection, {onEachFeature: onEachFeature}).addTo(map);
+    }
+  </script>
+
+  {% leaflet_map "spots" callback="window.map_init" %}
+{% endblock content %}
+
+{% block script_files_bottom %}
+{% endblock script_files_bottom %}

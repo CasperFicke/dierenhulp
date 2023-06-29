@@ -10,4 +10,5 @@ urlpatterns = [
   # App urls
   path('', include('nestkasten.urls', namespace='nestkasten')),
   path('', include('chargestations.urls', namespace='chargestations')),
+  path('', include('mushrooms.urls', namespace='mushrooms')),
 ]
