@@ -10,13 +10,21 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <!-- Linkerkant van de Navbar -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home </a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="#">Home </a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'nestkasten:index' %}">Nestkasten</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'chargestations:index' %}">Chargestations</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'mushrooms:index' %}">Mushroomspots</a></li>
-      <li class="nav-item"><a class="nav-link" href="{% url 'mushrooms:mushroomspots-data' %}">Mushroomspots-data</a></li>
+       <!-- Data menu -->
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Data
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="{% url 'nestkasten:nestkasten-data' %}">Nestkasten-data</a></li>
+          <li><a class="dropdown-item" href="{% url 'nestkasten:fourageergebieden-data' %}">Fourageergebieden-data</a></li>
+          <li><a class="dropdown-item" href="{% url 'mushrooms:mushroomspots-data' %}">Mushroomspots-data</a></li>
+        </ul>
+      </li>
     </ul>
     <!-- Rechterkant van de Navbar -->
   </div>

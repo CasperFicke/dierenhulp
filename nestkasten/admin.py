@@ -3,8 +3,14 @@
 # django
 from django.contrib import admin
 
-# local
-from .models import Nestkast
+# packages
+from leaflet.admin import LeafletGeoAdmin # django-leaflet
 
-# Reregister user
-admin.site.register(Nestkast)
+# local
+from .models import Nestkast, Fourageergebied
+
+# register Mushroomspot
+admin.site.register(Nestkast, LeafletGeoAdmin)
+
+# register Fourageergebiesd
+admin.site.register(Fourageergebied, LeafletGeoAdmin)

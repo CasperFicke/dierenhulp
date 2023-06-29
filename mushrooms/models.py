@@ -12,8 +12,8 @@ class MushroomSpot(models.Model):
   geom        = PointField()
   description = models.TextField(blank=True, null=True)
   picture     = models.ImageField(blank=True, null=True)
-
   
+  # functie om model in de admin web-pagina te kunnen presenteren
   def __str__(self):
     return self.name
   

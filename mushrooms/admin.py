@@ -1,4 +1,4 @@
-# stations/admin.py
+# mushrooms/admin.py
 
 # django
 from django.contrib import admin

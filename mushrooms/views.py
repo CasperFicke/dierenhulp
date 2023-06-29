@@ -4,13 +4,11 @@ from django.views.generic.base import TemplateView
 
 # local
 from .models import MushroomSpot
-# Create your views here.
 
 # All Mushroomspots view
 class AllMushroomspotsView(TemplateView):
   template_name = "mushrooms/all_mushroomspots.html"
-  #extra_context  = {'title': 'Mushrooms'}
-
+ 
   def get_context_data(self, **kwargs):
     title = 'Mushroomspots'
     context = super().get_context_data(**kwargs)
