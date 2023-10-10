@@ -23,9 +23,14 @@
           <li><a class="dropdown-item" href="{% url 'nestkasten:nestkasten-data' %}">Nestkasten-data</a></li>
           <li><a class="dropdown-item" href="{% url 'nestkasten:fourageergebieden-data' %}">Fourageergebieden-data</a></li>
           <li><a class="dropdown-item" href="{% url 'mushrooms:mushroomspots-data' %}">Mushroomspots-data</a></li>
+          <li><a class="dropdown-item" href="{% url 'mushrooms:wfs' %}">wfs</a></li>
         </ul>
       </li>
     </ul>
     <!-- Rechterkant van de Navbar -->
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link" href="http://localhost:8000/admin/">Admin</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'nestkasten:about' %}">About</a></li>
+    </ul>
   </div>
 </nav>

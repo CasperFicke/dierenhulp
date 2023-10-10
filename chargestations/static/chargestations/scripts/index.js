@@ -1,13 +1,20 @@
 /* chargestations/static/scripts/index.js */
 
-// Initialize the map
-var map = L.map('map').setView([41.51, -72.7], 8);
+/* set footer for contributors */
+const copy       = "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors";
+/* set url for background */
+const tiles_url  = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+/* create baselayer from tiles url and contribution footer */
+const base_layer = L.tileLayer(tiles_url, { attribution: copy });
+/* define map */
+const map        = L.map("map", { layers: [base_layer] });
 
-// add openstreetmap layer
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+/* set map center and zoom */
+map.locate()
+  /* centerlocation from ip */
+  .on("locationfound", (e) => map.setView(e.latlng, 14))
+  /* default centerlocation */
+  .on("locationerror", () => map.setView([41.51, -72.7], 8));
 
 // convert json text object to JSON dataobject to use data in javascript
 let stations = JSON.parse(document.getElementById('stations_json').textContent)

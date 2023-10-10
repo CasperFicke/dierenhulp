@@ -10,6 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv( BASE_DIR / '.env', )
 
+# settings for Windows 10 with GDAL
+if os.name == 'nt':
+  VENV_BASE = os.environ['VIRTUAL_ENV']
+  os.environ['PATH']     = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
+  os.environ['PROJ_LIB'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
+
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -36,6 +42,7 @@ INSTALLED_APPS = [
   'django_extensions', # django-extentions
   'leaflet', # django-leaflet
   'djgeojson', # django-geojson
+  'gisserver', # django-gisserver
 ]
 
 MIDDLEWARE = [
@@ -135,4 +142,11 @@ LEAFLET_CONFIG = {
   'SCALE'              : 'metric',
   'RESET_VIEW'         : False,
   #'MINIMAP'            : True,
+  'PLUGINS': {
+    'draw': {
+      'css': ['https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css',],
+      'js': 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js',
+      'auto-include': True,
+    },
+  },
 }

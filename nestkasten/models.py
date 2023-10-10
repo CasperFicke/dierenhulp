@@ -4,7 +4,7 @@
 from django.db import models
 
 # django packages
-from djgeojson.fields import PointField, PolygonField
+from djgeojson.fields import PointField, PolygonField # django-geojson
 
 # Nestkast model
 class Nestkast(models.Model):

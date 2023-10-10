@@ -2,6 +2,7 @@
 
 # django
 from django.db import models
+#from django.contrib.gis.db import models as geomodels
 
 # django packages
 from djgeojson.fields import PointField
@@ -19,6 +20,6 @@ class MushroomSpot(models.Model):
   
   @property
   def popupContent(self):
-    return '<img src="{}" /><p><{}</p>'.format(
+    return '<img src="{}" /><p>{}</p>'.format(
       self.picture.url,
-      self.description)
+      self.name)

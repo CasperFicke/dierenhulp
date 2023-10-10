@@ -1,0 +1,16 @@
+<!-- nestkasten/templates/nestkasten/All_Fourageergebieden.html -->
+
+{% load leaflet_tags %}
+<html>
+  <head>
+    {% leaflet_js plugins="forms" %}
+    {% leaflet_css plugins="forms" %}
+  </head>
+  <body>
+    <h1>Edit {{ fourageergebied }}</h1>
+    <form action="POST">
+      {{ fourageergebied }}
+    <input type="submit"/>
+    </form>
+  </body>
+</html>

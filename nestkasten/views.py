@@ -6,6 +6,11 @@ from django.views.generic.base import TemplateView
 
 # local
 from .models import Nestkast, Fourageergebied
+from .forms import FourageergebiedForm
+
+# about view
+class AboutView(TemplateView):
+	template_name = "nestkasten/about.html"
 
 """Nestkasten view."""
 class MarkersMapView(TemplateView):
@@ -17,4 +22,12 @@ class MarkersMapView(TemplateView):
     context['title']      = title
     context['nestkasten'] = Nestkast.objects.all()
     context['f_gebieden'] = Fourageergebied.objects.all()
+    return context
+  
+# fourageergebieden vieuw
+class FourageergebiedenView(TemplateView):
+  template_name = 'nestkasten/All_Fourageergebieden.html'
+
+  def get_context(self, **kwargs):
+    context = {'fourageergebied': FourageergebiedForm()}
     return context

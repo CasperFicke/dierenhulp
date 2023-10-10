@@ -9,9 +9,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// convert json text object to JSON dataobject to use data in javascript
-let netkasten = JSON.parse(document.getElementById('netkasten_json').textContent)
-
 // add marker for each netkast
 netkasten.forEach(netkast => {
   L.marker([netkast.latitude, netkast.longitude])

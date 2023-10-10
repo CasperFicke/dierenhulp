@@ -1,7 +1,7 @@
 # nestkasten/admin.py
 
 # django
-from django.contrib import admin
+from django.contrib.gis import admin
 
 # packages
 from leaflet.admin import LeafletGeoAdmin # django-leaflet
@@ -9,8 +9,9 @@ from leaflet.admin import LeafletGeoAdmin # django-leaflet
 # local
 from .models import Nestkast, Fourageergebied
 
-# register Mushroomspot
-admin.site.register(Nestkast, LeafletGeoAdmin)
+# marker model
+admin.site.register(Nestkast, admin.GISModelAdmin)
+  
 
-# register Fourageergebiesd
+# register Fourageergebied
 admin.site.register(Fourageergebied, LeafletGeoAdmin)
